@@ -6,6 +6,26 @@
   --primary: #0f8bff;
   --primary-dark: #0c6cd9;
   --line: #d9e6ff;
+  --hero-from: #ffffff;
+  --hero-to: #edf5ff;
+  --cta-panel-bg: #0f203c;
+  --cta-panel-text: #eaf2ff;
+  --body-overlay: radial-gradient(circle at 5% 0%, #dceeff 0%, transparent 45%);
+}
+
+:root[data-theme="dark"] {
+  --bg: #081422;
+  --surface: #0f1f33;
+  --text: #e7f0ff;
+  --muted: #9ab0cf;
+  --primary: #3a9bff;
+  --primary-dark: #267fdf;
+  --line: #243a55;
+  --hero-from: #0f1f33;
+  --hero-to: #0b182a;
+  --cta-panel-bg: #101b2d;
+  --cta-panel-text: #e7f0ff;
+  --body-overlay: radial-gradient(circle at 5% 0%, #1a3a5f 0%, transparent 45%);
 }
 
 * {
@@ -20,11 +40,12 @@ body {
 }
 
 body {
-  background: radial-gradient(circle at 5% 0%, #dceeff 0%, transparent 45%), var(--bg);
+  background: var(--body-overlay), var(--bg);
   color: var(--text);
   font-family: "Plus Jakarta Sans", sans-serif;
   min-height: 100vh;
   line-height: 1.5;
+  transition: background 220ms ease, color 220ms ease;
 }
 
 main {
@@ -33,8 +54,38 @@ main {
   padding: 56px 20px 72px;
 }
 
+.topbar {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.brand {
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+}
+
+.theme-toggle {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--text);
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 700;
+  padding: 10px 14px;
+  transition: background 160ms ease, border-color 160ms ease, transform 160ms ease;
+}
+
+.theme-toggle:hover {
+  border-color: var(--primary);
+  transform: translateY(-1px);
+}
+
 .hero {
-  background: linear-gradient(130deg, #ffffff 0%, #edf5ff 100%);
+  background: linear-gradient(130deg, var(--hero-from) 0%, var(--hero-to) 100%);
   border: 1px solid var(--line);
   border-radius: 24px;
   box-shadow: 0 20px 50px rgba(16, 35, 63, 0.08);
@@ -108,9 +159,9 @@ h1 {
 
 .cta-panel {
   align-items: center;
-  background: #0f203c;
+  background: var(--cta-panel-bg);
   border-radius: 22px;
-  color: #eaf2ff;
+  color: var(--cta-panel-text);
   display: flex;
   gap: 18px;
   justify-content: space-between;
@@ -135,6 +186,10 @@ h1 {
 }
 
 @media (max-width: 860px) {
+  main {
+    padding-top: 32px;
+  }
+
   .features {
     grid-template-columns: 1fr;
   }

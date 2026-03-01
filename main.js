@@ -1,3 +1,31 @@
+const root = document.documentElement;
+const themeToggle = document.querySelector("#theme-toggle");
+const themeToggleText = document.querySelector("#theme-toggle-text");
+const storedTheme = localStorage.getItem("theme");
+const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+const setTheme = (theme) => {
+  root.setAttribute("data-theme", theme);
+  if (themeToggle && themeToggleText) {
+    const isDark = theme === "dark";
+    themeToggleText.textContent = isDark ? "Light Mode" : "Dark Mode";
+    themeToggle.setAttribute(
+      "aria-label",
+      isDark ? "Enable light mode" : "Enable dark mode"
+    );
+  }
+};
+
+setTheme(storedTheme || (systemPrefersDark ? "dark" : "light"));
+
+if (themeToggle) {
+  themeToggle.addEventListener("click", () => {
+    const nextTheme = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    setTheme(nextTheme);
+    localStorage.setItem("theme", nextTheme);
+  });
+}
+
 const revealElements = document.querySelectorAll(".reveal-up");
 
 if (revealElements.length) {
