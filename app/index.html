@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CoinTax AI MVP | 업로드부터 리포트까지</title>
+  <meta
+    name="description"
+    content="CSV 업로드, 손익 계산, 데이터 품질 점수, AI 상담까지 한 번에 제공하는 CoinTax AI MVP"
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="/app/app.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <header class="app-topbar">
+      <a class="brand" href="/">CoinTax</a>
+      <div class="top-controls">
+        <div class="language-toggle" role="group" aria-label="언어 선택">
+          <button id="lang-ko" class="lang-button is-active" type="button" aria-pressed="true">한국어</button>
+          <button id="lang-en" class="lang-button" type="button" aria-pressed="false">English</button>
+        </div>
+        <button id="theme-toggle" class="theme-toggle" type="button" aria-label="다크 모드 켜기">
+          <span id="theme-toggle-text">다크 모드</span>
+        </button>
+      </div>
+    </header>
+
+    <section class="hero card">
+      <p class="hero-tag" data-i18n="heroTag">P0 MVP 워크플로우</p>
+      <h1 data-i18n="heroTitle">CSV 업로드부터 손익 계산, AI 상담까지</h1>
+      <p data-i18n="heroBody">거래 CSV를 업로드하면 정규화와 FIFO 손익 계산을 실행하고, 결과 기반 질문까지 이어집니다.</p>
+    </section>
+
+    <section class="grid two-col">
+      <article class="card">
+        <h2 data-i18n="uploadTitle">1) CSV 업로드</h2>
+        <p class="muted" data-i18n="uploadBody">업비트 형식 포함 CSV를 업로드하거나 직접 붙여넣으세요.</p>
+        <input id="csv-file" type="file" accept=".csv,text/csv" />
+        <textarea id="csv-text" rows="8" placeholder="체결시간,마켓,구분,체결가격,체결량,체결금액,수수료,수수료통화"></textarea>
+        <button id="parse-btn" class="btn primary" type="button" data-i18n="parseButton">파싱 및 계산 실행</button>
+        <p id="upload-status" class="status" aria-live="polite"></p>
+      </article>
+
+      <article class="card">
+        <h2 data-i18n="summaryTitle">2) 계산 요약</h2>
+        <div class="stats">
+          <div class="stat">
+            <span data-i18n="gainLabel">실현 손익</span>
+            <strong id="total-gain">-</strong>
+          </div>
+          <div class="stat">
+            <span data-i18n="feeLabel">총 수수료</span>
+            <strong id="total-fee">-</strong>
+          </div>
+          <div class="stat">
+            <span data-i18n="qualityLabel">데이터 품질 점수</span>
+            <strong id="quality-score">-</strong>
+          </div>
+          <div class="stat">
+            <span data-i18n="flagLabel">엔진 경고</span>
+            <strong id="flag-count">-</strong>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="grid two-col">
+      <article class="card">
+        <h2 data-i18n="recordsTitle">3) 정규화 거래내역</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th data-i18n="colDate">일시</th>
+                <th data-i18n="colType">유형</th>
+                <th data-i18n="colAsset">자산</th>
+                <th data-i18n="colQty">수량</th>
+                <th data-i18n="colAmount">금액(KRW)</th>
+              </tr>
+            </thead>
+            <tbody id="record-rows"></tbody>
+          </table>
+        </div>
+      </article>
+
+      <article class="card">
+        <h2 data-i18n="chatTitle">4) AI 상담 (RAG 준비형)</h2>
+        <p class="muted" data-i18n="chatBody">근거 문서가 없는 경우 단정하지 않고 추가 질문을 우선합니다.</p>
+        <textarea id="chat-question" rows="5" data-i18n-placeholder="chatPlaceholder" placeholder="예: 제 손실도 세금에 반영되나요?"></textarea>
+        <button id="chat-btn" class="btn" type="button" data-i18n="chatButton">질문하기</button>
+        <pre id="chat-answer" class="answer">-</pre>
+      </article>
+    </section>
+
+    <section class="card actions">
+      <div>
+        <h2 data-i18n="reportTitle">5) 리포트 결제(Checkout 스켈레톤)</h2>
+        <p class="muted" data-i18n="reportBody">Stripe 키 설정 시 Checkout 세션을 생성합니다.</p>
+      </div>
+      <button id="checkout-btn" class="btn primary" type="button" data-i18n="checkoutButton">리포트 결제 진행</button>
+    </section>
+  </main>
+
+  <script defer src="/app/app.js"></script>
+</body>
+</html>
