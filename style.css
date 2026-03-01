@@ -61,10 +61,45 @@ main {
   margin-bottom: 16px;
 }
 
+.controls {
+  align-items: center;
+  display: flex;
+  gap: 10px;
+}
+
 .brand {
   font-size: 1.05rem;
   font-weight: 800;
   letter-spacing: 0.03em;
+}
+
+.language-toggle {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  display: inline-flex;
+  overflow: hidden;
+}
+
+.lang-button {
+  background: transparent;
+  border: 0;
+  color: var(--muted);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.86rem;
+  font-weight: 700;
+  padding: 9px 12px;
+  transition: background 160ms ease, color 160ms ease;
+}
+
+.lang-button:hover {
+  color: var(--text);
+}
+
+.lang-button.is-active {
+  background: var(--primary);
+  color: #fff;
 }
 
 .theme-toggle {
@@ -188,6 +223,16 @@ h1 {
 @media (max-width: 860px) {
   main {
     padding-top: 32px;
+  }
+
+  .topbar {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .controls {
+    width: 100%;
   }
 
   .features {

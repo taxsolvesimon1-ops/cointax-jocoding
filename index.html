@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="en">
+<html lang="ko">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CoinTax | Crypto Tax Made Clear</title>
+  <title>CoinTax | 암호화폐 세금, 더 명확하게</title>
   <meta
     name="description"
-    content="CoinTax helps you organize transactions, calculate tax impact, and file with confidence."
+    content="CoinTax는 거래를 정리하고 세금 영향을 계산해, 더 자신 있게 신고할 수 있도록 돕습니다."
   />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -20,48 +20,50 @@
   <main>
     <header class="topbar reveal-up">
       <div class="brand">CoinTax</div>
-      <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Enable dark mode">
-        <span id="theme-toggle-text">Dark Mode</span>
-      </button>
+      <div class="controls">
+        <div class="language-toggle" role="group" aria-label="언어 선택">
+          <button id="lang-ko" class="lang-button is-active" type="button" aria-pressed="true">한국어</button>
+          <button id="lang-en" class="lang-button" type="button" aria-pressed="false">English</button>
+        </div>
+        <button id="theme-toggle" class="theme-toggle" type="button" aria-label="다크 모드 켜기">
+          <span id="theme-toggle-text">다크 모드</span>
+        </button>
+      </div>
     </header>
 
     <section class="hero reveal-up">
-      <p class="tag">Trusted by modern crypto investors</p>
-      <h1>Crypto taxes, finally easy to understand.</h1>
-      <p class="subtext">
-        CoinTax turns complex wallet activity into clear, audit-ready reports
-        in minutes.
+      <p class="tag" data-i18n="tagline">현대적인 암호화폐 투자자가 신뢰하는 서비스</p>
+      <h1 data-i18n="heroTitle">암호화폐 세금, 이제 정말 쉽게 이해하세요.</h1>
+      <p class="subtext" data-i18n="heroSubtext">
+        CoinTax는 복잡한 지갑 활동을 몇 분 안에 명확하고 감사 대응 가능한 리포트로 변환합니다.
       </p>
-      <a class="cta" href="#get-started">Start Free Trial</a>
+      <a class="cta" href="#get-started" data-i18n="heroCta">무료 체험 시작하기</a>
     </section>
 
-    <section class="features" aria-label="CoinTax features">
+    <section class="features" aria-label="CoinTax 기능" data-i18n-aria-label="featuresAriaLabel">
       <article class="feature-card reveal-up">
-        <h2>Automatic Import</h2>
-        <p>
-          Connect exchanges and wallets to sync trades, transfers, and staking
-          activity instantly.
+        <h2 data-i18n="feature1Title">자동 가져오기</h2>
+        <p data-i18n="feature1Body">
+          거래소와 지갑을 연결해 매매, 전송, 스테이킹 활동을 즉시 동기화하세요.
         </p>
       </article>
       <article class="feature-card reveal-up">
-        <h2>Smart Tax Engine</h2>
-        <p>
-          Calculate capital gains with accurate lot tracking and jurisdiction
-          aware tax logic.
+        <h2 data-i18n="feature2Title">스마트 세금 엔진</h2>
+        <p data-i18n="feature2Body">
+          정확한 로트 추적과 관할권별 세금 로직으로 자본 이득을 계산합니다.
         </p>
       </article>
       <article class="feature-card reveal-up">
-        <h2>File with Confidence</h2>
-        <p>
-          Export clean tax forms and accountant-ready summaries built for audit
-          peace of mind.
+        <h2 data-i18n="feature3Title">안심하고 신고</h2>
+        <p data-i18n="feature3Body">
+          감사 대응을 고려한 깔끔한 세금 서류와 회계사 제출용 요약을 내보내세요.
         </p>
       </article>
     </section>
 
     <section id="get-started" class="cta-panel reveal-up">
-      <h2>See your tax position in under 10 minutes.</h2>
-      <a class="cta cta-secondary" href="#">Create Your CoinTax Account</a>
+      <h2 data-i18n="panelTitle">10분 이내로 현재 세금 포지션을 확인하세요.</h2>
+      <a class="cta cta-secondary" href="#" data-i18n="panelCta">CoinTax 계정 만들기</a>
     </section>
   </main>
   <script defer type="text/javascript" src="/main.js"></script>
